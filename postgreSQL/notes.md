@@ -2,8 +2,8 @@
 
 - Indexes
 
-    Hash
-    B-tree: Better for less-than/greater-than/equals-to
+    - Hash
+    - B-tree: Better for less-than/greater-than/equals-to
 
 - Window functions
 
