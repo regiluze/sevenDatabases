@@ -1,6 +1,22 @@
 
+** Build the docker riak image
+git clone https://github.com/hectcastro/docker-riak.git
+cd docker-riak
+docker build -t "hectcastro/riak" .
 
-docker run --name=riak -d -p 8087:8087 -p 8098:8098 basho/riak-kv
+** start cluster
+DOCKER_RIAK_CLUSTER_SIZE (default 5)
+DOCKER_RIAK_AUTOMATIC_CLUSTERING -> a flag to automatically cluster Riak (default false)
+DOCKER_RIAK_DEBUG a flag to set -x on cluster management script (default false)
+make start-cluster
 
-[time series]
-docker run --name=riak -d -p 8087:8087 -p 8098:8098 basho/riak-ts
+
+Ping
+
+curl http://localhost:{docker_mapped_port_8087}/ping
+
+
+PUT
+curl -v -X PUT http://localhost:{docker_mapped_port_8087}/riak/animals/ace \
+-H "Content-type: application/json" \
+-d '"nickname": "The Wonder dog", "breed":"German Shepherd"'
