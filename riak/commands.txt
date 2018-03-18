@@ -15,6 +15,11 @@ Ping
 
 curl http://localhost:{docker_mapped_port_8087}/ping
 
+Buckets
+curl http://localhost:{docker_mapped_port_8087}/riak\?buckets\=true
+Bucket keys
+curl http://localhost:{docker_mapped_port_8087}/riak/animals\?keys\=true
+
 
 PUT
 curl -v -X PUT http://localhost:{docker_mapped_port_8087}/riak/animals/ace \
