@@ -25,3 +25,15 @@ PUT
 curl -v -X PUT http://localhost:{docker_mapped_port_8087}/riak/animals/ace \
 -H "Content-type: application/json" \
 -d '"nickname": "The Wonder dog", "breed":"German Shepherd"'
+
+DELETE
+curl -i -X DELETE http://localhost:{docker_mapped_port_8087}/riak/animals/{key}
+
+ADD LINK
+curl -X PUT http://localhost:{docker_mapped_port_8087}/riak/cages/1 \
+-H "Content-type: application/json" \
+-H "Link: </riak/animals/polly>; riaktag=\"contains\"" \
+-d '{"room": 101}'
+
+we are creating a link (contains) between polly and cage 1, and the cage data is room 101
+
